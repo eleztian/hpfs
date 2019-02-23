@@ -1,0 +1,113 @@
+* {
+    box-sizing:  border-box;
+}
+
+html, body {
+    background-color: #fff;
+    color: #333;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+.left {
+    background-color: #333;
+    color: #fff;
+    float: left;
+    height: 100%;
+    overflow: auto;
+    padding: 15px;
+    width: 30%;
+}
+
+#shared {
+    cursor: pointer;
+    padding: 3px;
+    height: 40%;
+    width: 100%;
+    float: left;
+}
+
+#expore {
+    height: 15%;
+    float: left;
+}
+#appInfo {
+    margin-top: 20px;
+    height: 5%;
+    float: left;
+}
+#logInfo {
+    width: 100%;
+}
+.dir .fa .shared-dir {
+    margin-right: 5px;
+    width: 100%;
+}
+
+.right {
+    float: right;
+    height: 100%;
+    overflow: auto;
+    width: 70%;
+}
+
+.title {
+    font-size: 1.5em;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.dirNmae {
+    background-color: #f1f1f1;
+    border: solid 1px #e1e1e1;
+    border-radius: 4px;
+    margin-top: 15px;
+    padding: 15px;
+    text-align: center;
+}
+
+.stat {
+    font-weight: bold;
+}
+
+.chart_title {
+    margin-bottom: 5px;
+}
+
+
+.mounted {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 1px #e1e1e1;
+}
+
+.mountedOne {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.mounted-username {
+    width: 60%;
+    float: left;
+}
+
+.unmount-button {
+    width: 35%;
+    float: left;
+    margin-left: 5%;
+    border-radius: 8px;
+}
+.expored {
+    width: 100%;
+    height: auto;
+
+}
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Config</title>
+    <link rel="stylesheet" href="static/lib/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<dev>
+    <form class="form-horizontal" action="" target="">
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">Username</label>
+            <div class="col-sm-10">
+                <span id="username" class="form-control">sdsd</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sharedDirs" class="col-sm-2 control-label">Shared Dir Path</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="sharedDirs" placeholder="DirPath">
+            </div>
+            <!-- More -->
+        </div>
+
+        <div class="form-group">
+            <label for="hostUrl" class="col-sm-2 control-label">Host Address</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="hostUrl" placeholder="Host Server">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="rpcPort" class="col-sm-2 control-label">RPC Port</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="rpcPort" placeholder="RPC Port">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" onclick="saveConfig()">Save</button>
+            </div>
+        </div>
+    </form>
+</dev>
+<script>
+    window.nodeRequire = require;
+    delete window.require;
+    delete window.exports;
+    delete window.module;
+</script>
+<script src="static/lib/jquery/jquery-3.2.1.min.js"></script>
+<script>
+    let obj;
+    $.getJSON("http://127.0.0.1:8080/config", function (data){
+        console.log(data.host_url);
+        obj = data;
+        document.getElementById("username").innerText = data.user.username;
+        document.getElementById("hostUrl").value = data.host_url;
+        document.getElementById("rpcPort").value = data.rpc_port;
+        document.getElementById("sharedDirs").value = data.share_paths;
+    });
+    function saveConfig() {
+        let username = document.getElementById("username").innerText;
+        let hosturl = document.getElementById("hostUrl").value;
+        let rpcPort = document.getElementById("rpcPort").value;
+        let shareDirs = document.getElementById("sharedDirs").value;
+
+        obj.user.username = username;
+        obj.host_url = hosturl;
+        obj.rpc_port = rpcPort;
+        let t = shareDirs.split(",");
+        obj.share_paths = t;
+
+        $("#request-process-patent").html("正在提交数据，请勿关闭当前窗口...");
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:8080/config/update",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(obj),
+            dataType: "json",
+            success: function (message) {
+                if (message == 0) {
+                    alert("请求已提交！我们会尽快与您取得联系");
+                }
+            },
+            error: function (message) {
+                $("#request-process-patent").html("提交数据失败！");
+            }
+        });
+
+        window.close()
+    }
+</script>
+<script>
+
+</script>
+</body>
+</html>

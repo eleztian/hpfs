@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="static/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/lib/astiloader/astiloader.css">
+    <link rel="stylesheet" href="static/lib/astimodaler/astimodaler.css">
+    <link rel="stylesheet" href="static/lib/astinotifier/astinotifier.css">
+    <link rel="stylesheet" href="static/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="left" >
+        <dev id="shared">
+            <dev>
+                <span>Tab,zhang</span><button>Unmount</button><br />
+                <span>Tab,zhang</span><button>Unmount</button><br />
+                <span>Tab,zhang</span><button>Unmount</button><br />
+                <span>Tab,zhang</span><button>Unmount</button><br />
+            </dev>
+        </dev>
+        
+        <dev id="mounted" class="mounted">
+
+
+        </dev>
+
+        <dev class="expored">
+            <form class="form-horizontal formClass" name="login-form"  id="form" action="" method="post" target="the_iframe">
+                <div class="form-group">
+                    <label for="search-username-input" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-10 inputClass">
+                        <input type="text" class="form-control" id = "search-username-input" placeholder="Username">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="search-filename-input" class="col-sm-2 control-label">Filename</label>
+                    <div class="col-sm-10 inputClass">
+                        <input type="text" class="form-control" id="search-filename-input" placeholder="Filename">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="file-path-input" class="col-sm-2 control-label">FilePath</label>
+                    <div class="col-sm-10 inputClass">
+                        <input type="text" class="form-control" id="search-file-path-input" placeholder="FilePath">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mount-point-input" class="col-sm-2 control-label">MountPoint</label>
+                    <div class="col-sm-10 inputClass">
+                        <input type="text" class="form-control" id="mount-point-input" placeholder="MountPoint">
+                    </div>
+                </div>
+
+                <div class="form-group inputClass">
+                    <div class="col-sm-offset-2 col-sm-10 btnClass">
+                        <button type="submit" class="btn btn-default " onclick="index.searchFiles()">Search</button>
+                        <button type="button" class="btn btn-default" onclick="index.confirmMount()">Mount</button>
+                    </div>
+                </div>
+            </form>
+            <iframe name="the_iframe" frameborder="no" style="width: 0px; height: 0px">
+
+        </iframe>
+        </dev>
+        <dev id="appInfo">
+            <span>ZhangTian </span>|<span> 11403070327 </span> | <span> HPFS-Clent </span>
+        </dev>
+    </div>
+
+    <div class="right">
+        <iframe name="logInfo" id="logInfo" 
+                src="gitinfo.html"
+                frameborder="no"
+                style="width: 100%; height: 100%; margin: 0px"
+                scrolling="auto"
+                marginheight="0"
+                marginwidth="0"
+                width="100%"
+                height="100%"
+        >
+        </iframe >
+    </div>
+    <script>
+        // window.$ = window.jQuery = require('./static/lib/jquery/jquery-3.2.1.min.js');
+    </script>
+    <script src="static/js/index.js"></script>
+    <script src="static/lib/astiloader/astiloader.js"></script>
+    <script src="static/lib/astimodaler/astimodaler.js"></script>
+    <script src="static/lib/astinotifier/astinotifier.js"></script>
+    <script type="text/javascript">
+        index.init();
+
+    </script>
+</body>
+</html>
